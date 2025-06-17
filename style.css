@@ -1,0 +1,669 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+nav {
+  background-color: #f0f0f0; /* Light grey background */
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  position: sticky; /* Makes navbar sticky */
+  top: 0; /* Sticks to the top */
+  z-index: 1000; /* Ensures navbar stays above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+
+.logo img {
+  height: 40px; /* Adjust based on your logo size */
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #555;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: #f0f0f0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: left 0.3s ease;
+    z-index: 100;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+}
+.nav-links a {
+  position: relative;
+  padding: 5px 0;
+}
+
+/* Hover effect for all nav items */
+.nav-links a:hover {
+  color: #000;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Categories dropdown styles */
+.nav-links li {
+  position: relative;
+}
+
+.categories-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f0f0f0;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  border-radius: 0 0 4px 4px;
+}
+
+.categories-dropdown li {
+  padding: 0;
+}
+
+.categories-dropdown a {
+  display: block;
+  padding: 12px 16px;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.categories-dropdown a:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+/* Show dropdown when parent is hovered or has active class */
+.has-dropdown:hover .categories-dropdown,
+.has-dropdown.active .categories-dropdown {
+  display: block;
+}
+
+/* Mobile dropdown adjustments */
+@media (max-width: 768px) {
+  .categories-dropdown {
+    position: static;
+    box-shadow: none;
+    display: none;
+    background-color: #e0e0e0;
+  }
+
+  .has-dropdown.active .categories-dropdown {
+    display: block;
+  }
+}
+/* Introduction/Hero Section */
+.hero {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  min-height: 500px; /* Minimum height */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("nitya\ assets/bg.upgraded.jpeg") center/cover no-repeat;
+  z-index: -2;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: white;
+  text-align: right; /* Align text to right */
+  text-align: left;
+  line-height: 0.8;
+}
+
+.hero-content p {
+  max-width: 600px;
+  margin-right: auto; /* Push to right side */
+  margin-bottom: 1.5rem;
+  font-size: 60px;
+}
+
+.hero-content > :first-child {
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 58px); /* Responsive font */
+}
+.hero-content > :nth-child(2) {
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 72px); /* Responsive font */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    text-align: center;
+    line-height:1;
+  }
+
+  .hero-content p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+/* Featured Products Section */
+.featured-products {
+  background-color: #e8f5e9; /* Light green background */
+  padding: 60px 0;
+  position: relative;
+  border-top: 1px solid #c8e6c9;
+  border-bottom: 1px solid #c8e6c9;
+}
+
+.featured-products {
+  background: linear-gradient(rgba(84, 165, 88, 0.3), rgba(84, 154, 87, 0.3)),
+    /* Green overlay */ url("nitya\ assets/products2.jpeg");
+  padding: 60px 0;
+  position: relative;
+  border-top: 1px solid #c8e6c9;
+  border-bottom: 1px solid #c8e6c9;
+}
+
+.featured-products .section-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.featured-products .section-heading h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.products-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.products-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+.product-item {
+  flex: 0 0 auto;
+  width: 200px;
+  margin: 0 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-image-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden; /* This ensures the image stays within the circular boundary */
+  border: 5px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image covers the container while maintaining aspect ratio */
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}
+
+.product-name {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border: none;
+  color: #2e7d32;
+  font-size: 20px;
+}
+
+.scroll-btn.left {
+  left: 20px;
+}
+
+.scroll-btn.right {
+  right: 20px;
+}
+
+.scroll-btn:hover {
+  background-color: #2e7d32;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .scroll-btn {
+    display: none;
+  }
+
+  .products-container {
+    padding: 20px 10px;
+  }
+
+  .product-item {
+    width: 150px;
+  }
+
+  .product-image-container {
+    width: 140px;
+    height: 140px;
+  }
+}
+.products-container {
+  scroll-behavior: smooth; /* For smoother auto-scroll */
+}
+
+/* Add slight fade effect at edges */
+.products-container {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+/* Product Link Styling */
+/* Ensure links don't affect the layout */
+.product-link {
+  display: block;
+  width: fit-content; /* Contain to image size */
+  margin: 0 auto; /* Center horizontally */
+  border-radius: 50%; /* Maintain circle shape */
+  overflow: hidden; /* Clip image to circle */
+}
+
+/* Reset image positioning */
+.product-image {
+  position: static; /* Remove any absolute positioning */
+  display: block; /* Remove inline spacing */
+}
+
+ /* Categories Dropdown */
+        .has-dropdown:hover .categories-dropdown,
+        .has-dropdown.active .categories-dropdown {
+            display: block;
+        }
+
+        .categories-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f0f0f0;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1001;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .categories-dropdown a {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .categories-dropdown a:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Product Categories Section */
+        .product-categories {
+            position: relative;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(255, 253, 240, 0.7), rgba(255, 253, 240, 0.7)), 
+                        url('nitya\ assets/categories\ background.png') center/cover no-repeat;
+            text-align: center;
+            min-height: 600px;
+        }
+
+        .categories-title {
+            font-size: 2.5rem;
+            color: #4a4a4a;
+            margin-bottom: 50px;
+            font-weight: 700;
+            
+            letter-spacing: 1px;
+        }
+
+        .categories-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-item {
+            flex: 0 0 calc(25% - 20px);
+            min-width: 200px;
+            transition: all 0.4s ease;
+        }
+
+        .category-image-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            border: 3px solid #fff;
+        }
+/* Add this to your existing CSS */
+.category-item a {
+    text-decoration: none;
+}
+
+.category-item a:hover {
+    text-decoration: none;
+}
+        .category-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .category-name {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover Effects */
+        .category-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-item:hover .category-image-container {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        .category-item:hover .category-image {
+            transform: scale(1.1);
+        }
+
+        .category-item:hover .category-name {
+            color: #2a6496;
+            font-weight: 700;
+        }
+
+       /* Footer Section */
+.main-footer {
+  position: relative;
+  color: white;
+  font-family: "Arial", sans-serif;
+}
+
+.footer-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.footer-background .bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.main-footer {
+  background: linear-gradient(rgba(190, 246, 193, 0.7), rgba(46, 125, 50, 0.7)),
+    url("./images/footer-bg.jpg") center/cover no-repeat;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  gap: 30px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+}
+
+.footer-column h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: #ffc107;
+}
+
+.footer-column p,
+.footer-column li {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.footer-column a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column a:hover {
+  color: #ffc107;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.social-links a:hover {
+  background: #ffc107;
+  color: #2e7d32;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+}
+
+.footer-bottom a {
+  color: #ffc107;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+
+  .footer-column h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}

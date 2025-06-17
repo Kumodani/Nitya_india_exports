@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Lentils</title>
+    <link rel="stylesheet" href="Green Lentils.css" />
+   
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+        <div class="logo">
+          <img src="/nitya assets/logo.1.png" alt="Company Logo" />
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="/index.html">Home</a></li>
+          <li class="has-dropdown">
+            <a href="#">Categories</a>
+            <ul class="categories-dropdown">
+              <li><a href="/categories pages/grains.html">Grains</a></li>
+              <li><a href="/categories pages/pulses.html">Pulses</a></li>
+              <li><a href="/categories pages/peanuts.html">Peanuts</a></li>
+              <li><a href="/categories pages/product pages/Fruits.html">Dehydrated Fruits</a></li>
+              <li><a href="/categories pages/spices.html">Spices</a></li>
+              <li><a href="/categories pages/Corn Grit.html">Corn Grits</a></li>
+              <li><a href="/categories pages/product pages/Cashew.html">Cashew Nuts</a></li>
+            </ul>
+          </li>
+          <li><a href="/Contact.html">Contact Us</a></li>
+        </ul>
+
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+     <div class="product-container">
+        <!-- Product Title -->
+        <h1 class="product-title">Green Lentils</h1>
+        
+        <!-- Product Image with Enquiry Button -->
+        <div class="product-image-container">
+            <div class="product-image-frame">
+                <img height="200px" width="200px" src="/nitya assets/products images/pulses/green lentils.webp" alt="Premium Turmeric Powder" class="product-image">
+            </div>
+            <button class="enquire-btn" onclick="openEnquiryModal()">Enquire Now</button>
+        </div>
+        
+        <!-- Product Specifications Table -->
+        <table class="product-specs">
+            <tr>
+                <th>Product Name</th>
+                <td>Organic Turmeric Powder</td>
+            </tr>
+            <tr>
+                <th>Origin</th>
+                <td>Erode, Tamil Nadu</td>
+            </tr>
+            <tr>
+                <th>Color</th>
+                <td>Deep Golden Yellow</td>
+            </tr>
+            <tr>
+                <th>Aroma</th>
+                <td>Earthy and Pungent</td>
+            </tr>
+            <tr>
+                <th>Curcumin Content</th>
+                <td>≥ 3.5%</td>
+            </tr>
+            <tr>
+                <th>Packaging</th>
+                <td>500g, 1kg, 5kg packs</td>
+            </tr>
+            <tr>
+                <th>Shelf Life</th>
+                <td>24 months</td>
+            </tr>
+            <tr>
+                <th>Certification</th>
+                <td>Organic, FSSAI, ISO 22000</td>
+            </tr>
+        </table>
+        
+        <!-- Product Description -->
+        <div class="product-description">
+            <h2 class="description-heading">About Our Turmeric Powder</h2>
+            <p>
+                Our premium turmeric powder is sourced directly from organic farms in Erode, 
+                known as the turmeric city of India. Carefully harvested at peak maturity, 
+                sun-dried, and stone-ground to preserve its natural color, aroma, and 
+                medicinal properties.
+            </p>
+            
+            <h2 class="description-heading">Health Benefits</h2>
+            <p>
+                Rich in curcumin, our turmeric powder offers powerful anti-inflammatory 
+                and antioxidant properties. Regular consumption may help boost immunity, 
+                improve digestion, and support joint health. The high curcumin content 
+                ensures maximum therapeutic benefits.
+            </p>
+            
+            <h2 class="description-heading">Culinary Uses</h2>
+            <p>
+                Essential for Indian curries, this vibrant powder adds color and flavor to 
+                dishes. Use in rice preparations, soups, marinades, and golden milk. 
+                A pinch enhances the visual appeal and nutritional value of any recipe.
+            </p>
+            
+            <h2 class="description-heading">Quality Assurance</h2>
+            <p>
+                Each batch is tested for purity, color strength, and curcumin content. 
+                Our strict quality control ensures you receive pesticide-free, unadulterated 
+                turmeric powder with no artificial colors or additives.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Enquiry Modal -->
+    <div id="enquiryModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeEnquiryModal()">&times;</span>
+        <h2 class="modal-title">Product Enquiry</h2>
+        <form id="enquiryForm">
+          <div class="form-scrollable">
+            <div class="form-group">
+              <label for="name">Full Name*</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address*</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number*</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="quantity">Quantity Required</label>
+              <select id="quantity" name="quantity">
+                <option value="1-5 kg">1-5 kg</option>
+                <option value="5-20 kg">5-20 kg</option>
+                <option value="20-100 kg">20-100 kg</option>
+                <option value="100+ kg">100+ kg</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message"></textarea>
+            </div>
+            <input
+              type="hidden"
+              id="product"
+              name="product"
+              value="Green Lentils"
+            />
+          </div>
+          <div class="submit-container">
+            <button type="submit" class="submit-btn">Submit Enquiry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+   
+    
+    
+   <!-- Footer Section -->
+    <footer class="main-footer">
+      <div class="footer-background">
+        <img
+          src="/nitya assets/footer background1.jpg"
+          alt="Decorative background"
+          class="bg-image"
+        />
+        <div class="overlay"></div>
+      </div>
+
+      <div class="footer-content">
+        <!-- Column 1: About -->
+        <div class="footer-column">
+          <h3>About Nitya India Exports</h3>
+          <p>
+            Specializing in premium quality spices and organic products since
+            1995.
+          </p>
+          <div class="social-links">
+           <a href="https://facebook.com" target="_blank"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="https://www.instagram.com/nityaindiaexports?utm_source=ig_web_button_share_sheet&igsh=azRiN3FqY3QyMDdz" target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://linkedin.com" target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+        </div>    
+        
+        <!-- Column 2: Quick Links -->
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/About.html">About Us</a></li>
+            <li><a href="/Customers.html">Our Customers</a></li>
+            <li><a href="/certifications.html">Certifications</a></li>
+
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact -->
+        <div class="footer-column">
+          
+          <p>
+            Plant-Office: Dharkallgaon Bhikangoan Road (Khargone) M.P 45113, India
+          </p>
+          <p>
+          Office: A1 Holkar Colony Sanawad M.P 451111, India
+          </p>
+          <p>
+            <i class="fas fa-phone"></i>
+            <a href="tel:+911234567890">+91 9340645783, +91 9967736318</a>
+          </p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:Exportzoom25@gmail.com">Email: Exportzoom25@gmail.com</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2023 Nitya India Exports. All Rights Reserved. 
+        </p>
+      </div>
+    </footer>
+     <script src="Green Lentils.js"></script>
+  </body>
+</html>
